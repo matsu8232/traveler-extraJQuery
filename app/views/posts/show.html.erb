@@ -27,11 +27,7 @@
                             ♡<%= @post.favorites.count %> いいね
                         <% end %>
                     <% end %>
-                    <td>閲覧数：<%= @post.read_counts.count %></td>
-                    <% if @post.user.id ==cirrent_user.id %>
-                        <%= link_to 'Edit', edit post_path(@post), class: "btn btn-sm btn-success" %>
-                        <%= link_to 'Destroy', post_path, method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-sm btn-danger" %>
-                    <% end %>
+                    <span>閲覧数：<%= @post.read_counts.count %></span>
                 </p>
                 <h2>感想</h2>
                 <p id="text"><%= @post.text %></p>
