@@ -22,7 +22,7 @@
         </div>
         <%= form_with model: @chat, data: {remote: true} do |f| %>
             <%= f.text_field :message %>
-            <%= f.submit "送信する", class: "btn btn-dark btn-sm" %>
+            <%= f.submit "送信する", class: "btn btn-light btn-outline-dark btn-sm" %>
             <%= f.hidden_field :room_id %>
         <% end %>
     </div>
