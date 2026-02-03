@@ -7,7 +7,7 @@
             <% @chats.each do |chat| %>
                 <div class="mb-3">
                     <% if chat.user_id == current_user.id %>
-                        <%= render 'index', chat: chat %>
+                        <%= render 'chat', chat: chat %>
                     <% else %>
                         <div class="left-container d-flex align-items-start">
                             <p class="ml-2" style="text-align: left;">

@@ -1,0 +1,10 @@
+<div class="right-container d-flex justify-content-end mb-3 chat-item">
+    <div class="d-flex align-items-center">
+        <p id="chat_<%= chat.id %>" style="background-color: #e0f2f1; padding: 8px 12px; border-radius: 10px; margin-bottom: 0;">
+            <%= chat.message %>
+        </p>
+        <div class="delete-button-wrapper mr-2">
+            <%= button_to "×", chat_path(chat), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger btn-sm ml-2", remote: true, id: "delete_chat_#{chat.id}" %>
+        </div>
+    </div>
+</div>

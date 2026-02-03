@@ -1,8 +1,0 @@
-<div class="right-container d-flex flex-column align-items-end">
-    <div class="d-flex align-items-center">
-        <%= link_to "×", chat_path(chat), method: :delete, data: { confirm: "削除しますか？" }, class: "text-danger mr-2", style: "text-decoration: none; font-size: 12px;" %>
-        <p id="chat_<%= chat.id %>" style="background-color: #e0f2f1; padding: 8px 12px; border-radius: 10px; margin-bottom: 0;">
-            <%= chat.message %>
-        </p>
-    </div>
-</div>
