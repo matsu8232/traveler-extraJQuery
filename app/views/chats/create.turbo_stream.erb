@@ -1,5 +1,5 @@
 <% if @chat.errors.any? %>
-    <%= turbo_stream.replace "chat_error" do %>
+    <%= turbo_stream.update "chat_error" do %>
         <div class="text-danger mb-2">
             <%= @chat.errors.full_messages.first %>
         </div>
@@ -9,9 +9,9 @@
         <%= render "chat", chat: @chat %>
     <% end %>
 
-    <%= turbo_stream.replace "chat_form" do %>
+    <%= turbo_stream.update "chat_form" do %>
         <%= render "form", chat: Chat.new(room_id: @chat.room_id) %>
     <% end %>
 
-    <%= turbo_stream.replace "chat_error", "" %>
+    <%= turbo_stream.update "chat_error", "" %>
 <% end %>
