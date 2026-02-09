@@ -20,8 +20,18 @@ class ChatsController < ApplicationController
 
   def create
     @chat = current_user.chats.new(chat_params)
-    @chat.save
+
+    respond_to do |format|
+      if @chat.save
+        format.html { redirect_to chats_path }
+        format.js   # create.js.erb
+      else
+        format.js   { render :validate } # validate.js.erb
+        format.html { render :show }
+      end
+    end
   end
+
 
   def destroy
     @chat = current_user.chats.find(params[:id])

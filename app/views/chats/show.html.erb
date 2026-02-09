@@ -1,30 +1,23 @@
-<div class="cover-chat-show">
-    <div class="container d-flex flex-column align-items-center">
-        <div class="row mt-5 mb-3">
-            <h1 class="font-weight-normal"><span style="color: 	#0072BC;"><%= @user.name %>さん</span>とのトークルーム</h1>
-        </div>
+<h2 id="room" data-room="<%= @room.id %>" data-user="<%= current_user.id %>"><%= @user.name %>さんとのチャット</h2>
 
-        <div class="message" id="messages">
-            <% @chats.each do |chat| %>
-                <% if chat.user_id == current_user.id %>
-                    <%= render 'chat', chat: chat %>
-                <% else %>
-                    <div class="mb-3" style="text-align: left;">
-                        <span style="background-color: #f6cedc; padding: 8px 12px; border-radius: 10px; display: inline-block;">
-                            <%= chat.message %>
-                        </span>                        
-                    </div>
-                <% end %>
-            <% end %>
-        </div>
-
-        <div class="fixed-bottom p-3">
-            <div class="container d-flex flex-column align-items-center">
-                <div id="chat_error"></div>
-                <div class="w-50">
-                    <%= render "form", chat: @chat %>
-                </div>
+<div class="message" style="width: 400px;">
+    <% @chats.each do |chat| %>
+        <% if chat.user_id == current_user.id %>
+            <%= render "chat", chat: chat %>
+        <% else %>
+            <div class="left-container d-flex">
+                <p class=ml-1 style="text-align: left;"><span style="background-color: #F5F5DC; padding: 5px; border-radius: 10px;"><%= chat.message %></span></p>
             </div>
-        </div>
-    </div>
+        <% end %>
+    <% end %>
 </div>
+
+<div class="errors">
+    <%= render "errors", obj: @chat %>
+</div>
+
+<%= form_with model: @chat, data: {turbo: false, remote: true} do |f| %>
+    <%= f.text_field :message %>
+    <%= f.submit "送信", class: "btn btn-dark btn-sm" %>
+    <%= f.hidden_field :room_id %>
+<% end %>
