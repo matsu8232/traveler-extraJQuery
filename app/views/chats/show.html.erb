@@ -16,7 +16,7 @@
     <%= render "errors", obj: @chat %>
 </div>
 
-<%= form_with model: @chat, data: {turbo: false, remote: true} do |f| %>
+<%= form_with model: @chat, data: { remote: true }, local: false do |f| %>
     <%= f.text_field :message %>
     <%= f.submit "送信", class: "btn btn-dark btn-sm" %>
     <%= f.hidden_field :room_id %>

@@ -27,7 +27,7 @@ class ChatsController < ApplicationController
         format.js   # create.js.erb
       else
         format.js   { render :validate } # validate.js.erb
-        format.html { render :show }
+        format.html { redirect_to chats_path, alert: "送信できませんでした" }
       end
     end
   end
