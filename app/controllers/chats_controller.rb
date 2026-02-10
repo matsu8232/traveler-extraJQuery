@@ -23,15 +23,13 @@ class ChatsController < ApplicationController
 
     respond_to do |format|
       if @chat.save
-        format.html { redirect_to chats_path }
         format.js   # create.js.erb
+        format.html { redirect_to chats_path }
       else
-        format.js   { render :validate } # validate.js.erb
-        format.html { redirect_to chats_path, alert: "送信できませんでした" }
+        format.js { render :validate }
       end
     end
   end
-
 
   def destroy
     @chat = current_user.chats.find(params[:id])
